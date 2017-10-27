@@ -30,6 +30,7 @@ Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/ervandew/supertab.git'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/scrooloose/nerdtree.git'
 call plug#end()
 
 let g:ycm_filetype_blacklist = {
@@ -56,3 +57,7 @@ map <Leader> <Plug>(easymotion-prefix)
 "Set airline theme to solarized-dark
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
+
+"Sane NerdTree defaults
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
