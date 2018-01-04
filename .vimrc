@@ -5,8 +5,7 @@ set number
 set linebreak	
 set showbreak=+++	
 set textwidth=100	
-set showmatch	
-set visualbell	
+set showmatch
  
 set hlsearch	
 set smartcase	
@@ -15,9 +14,10 @@ set incsearch
  
 set autoindent	
 set shiftwidth=4	
+set expandtab
 set smartindent	
 set smarttab	
-set softtabstop=4	
+set tabstop=4	
 
 set ruler	
  
@@ -26,11 +26,19 @@ set backspace=indent,eol,start
 
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/davidhalter/jedi-vim.git'
-Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/ervandew/supertab.git'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/itchyny/lightline.vim.git'
+
+"START HASKELL PLUGINS
+Plug 'https://github.com/roxma/nvim-yarp'
+Plug 'https://github.com/roxma/vim-hug-neovim-rpc'
+Plug 'https://github.com/Shougo/deoplete.nvim'
+Plug 'https://github.com/eagletmt/ghcmod-vim'
+Plug 'https://github.com/eagletmt/neco-ghc'
+Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
+"END HAKELL PLUGINS
 call plug#end()
 
 let g:ycm_filetype_blacklist = {
@@ -48,16 +56,30 @@ let g:ycm_filetype_blacklist = {
 
 let g:jedi#show_call_signatures = "1"
 
+"Set theme for lightline
+let g:lightline = {
+      \ 'colorscheme': 'Dracula',
+      \ }
+
 "Set Leader key to space bar
 let mapleader = " "
 
 "Set EasyMotion to work with just one leader press
 map <Leader> <Plug>(easymotion-prefix)
 
-"Set airline theme to solarized-dark
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-
 "Sane NerdTree defaults
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"Set spellcheck on Markdown
+autocmd FileType markdown setlocal spell
+
+"Stop call signatures on jedivim, makes it faster
+let g:jedi#show_call_signatures = "0"
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+"Enable deoplete
+let g:deoplete#enable_at_startup = 1
