@@ -25,19 +25,18 @@ set undolevels=2000
 set backspace=indent,eol,start	
 
 call plug#begin('~/.vim/plugged')
-Plug 'https://github.com/davidhalter/jedi-vim.git'
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/ervandew/supertab.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/itchyny/lightline.vim.git'
+Plug 'https://github.com/icymind/NeoSolarized.git'
+Plug 'https://github.com/Shougo/deoplete.nvim'
 
 "START HASKELL PLUGINS
-Plug 'https://github.com/roxma/nvim-yarp'
-Plug 'https://github.com/roxma/vim-hug-neovim-rpc'
-Plug 'https://github.com/Shougo/deoplete.nvim'
 Plug 'https://github.com/eagletmt/ghcmod-vim'
 Plug 'https://github.com/eagletmt/neco-ghc'
 Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'https://github.com/neovimhaskell/haskell-vim.git'
 "END HAKELL PLUGINS
 call plug#end()
 
@@ -53,8 +52,6 @@ let g:ycm_filetype_blacklist = {
       \ 'infolog' : 1,
       \ 'python' : 1
       \}
-
-let g:jedi#show_call_signatures = "1"
 
 "Set theme for lightline
 let g:lightline = {
@@ -83,3 +80,8 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 "Enable deoplete
 let g:deoplete#enable_at_startup = 1
+
+"Fancy solarized dark setup for NeoVim
+set termguicolors
+colorscheme NeoSolarized
+set background=dark
