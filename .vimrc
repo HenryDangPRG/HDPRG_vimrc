@@ -31,13 +31,16 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/icymind/NeoSolarized.git'
 Plug 'https://github.com/Shougo/deoplete.nvim'
+Plug 'https://github.com/zchee/deoplete-jedi'
 
 "START HASKELL PLUGINS
-Plug 'https://github.com/eagletmt/ghcmod-vim'
-Plug 'https://github.com/eagletmt/neco-ghc'
-Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'https://github.com/neovimhaskell/haskell-vim.git'
 "END HAKELL PLUGINS
+
+"START SCALA PLUGINS
+Plug 'https://github.com/derekwyatt/vim-scala'
+"END SCALA PLUGINS
+
 call plug#end()
 
 let g:ycm_filetype_blacklist = {
@@ -55,7 +58,7 @@ let g:ycm_filetype_blacklist = {
 
 "Set theme for lightline
 let g:lightline = {
-      \ 'colorscheme': 'Dracula',
+      \ 'colorscheme': 'darcula',
       \ }
 
 "Set Leader key to space bar
